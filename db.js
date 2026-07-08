@@ -183,6 +183,7 @@ const DB = (() => {
       polls,
       ads,
       answers: [],
+      reports: [],
       reactions: { fire: 0, wow: 0, heart: 0, poop: 0 }
     };
   }
@@ -192,7 +193,7 @@ const DB = (() => {
     const s = seed();
     const out = Object.assign({}, s, d);
     out.settings = Object.assign({}, s.settings, d.settings || {});
-    ['categories','memes','videos','comments','users','games','quizzes','challenges','polls','ads','answers'].forEach(k => {
+    ['categories','memes','videos','comments','users','games','quizzes','challenges','polls','ads','answers','reports'].forEach(k => {
       if (!Array.isArray(out[k])) out[k] = s[k];
     });
     out.reactions = Object.assign({}, s.reactions, d.reactions || {});
@@ -364,6 +365,50 @@ const DB = (() => {
     logout() { localStorage.removeItem(USER_KEY); }
   };
 
+  /* ---- ULUBIONE (per przeglądarka, jak głosy) --------------------------- */
+  const FAV_KEY = 'bwp_favs';
+  const favorites = {
+    _all() { try { return JSON.parse(localStorage.getItem(FAV_KEY)) || {}; } catch (e) { return {}; } },
+    has: (id) => !!favorites._all()[id],
+    toggle(id) {
+      const f = favorites._all();
+      if (f[id]) delete f[id]; else f[id] = 1;
+      try { localStorage.setItem(FAV_KEY, JSON.stringify(f)); } catch (e) {}
+      return !!f[id];
+    },
+    list: () => Object.keys(favorites._all()).map(id => memes.byId(id)).filter(Boolean),
+    count: () => Object.keys(favorites._all()).length
+  };
+
+  /* ---- ZGŁOSZENIA nieodpowiednich treści -------------------------------- */
+  const REP_KEY = 'bwp_reported';
+  const reports = {
+    all: () => state.reports.slice(),
+    forMeme: (id) => state.reports.filter(r => r.meme_id === id),
+    count: () => state.reports.length,
+    alreadyByMe(id) { try { return !!(JSON.parse(localStorage.getItem(REP_KEY)) || {})[id]; } catch (e) { return false; } },
+    add(meme_id, reason = 'inne') {
+      if (reports.alreadyByMe(meme_id)) return { ok: false, reason: 'already' };
+      state.reports.push({ id: uid('rep'), meme_id, reason, created_at: now() }); save();
+      try {
+        const mine = JSON.parse(localStorage.getItem(REP_KEY) || '{}'); mine[meme_id] = 1;
+        localStorage.setItem(REP_KEY, JSON.stringify(mine));
+      } catch (e) {}
+      return { ok: true };
+    },
+    clear(meme_id) { state.reports = state.reports.filter(r => r.meme_id !== meme_id); save(); }
+  };
+
+  /* ---- REPUTACJA autora: suma wyniku zatwierdzonych memów + bonusy ------ */
+  function reputation(author) {
+    if (!author) return { points: 0, memes: 0, level: 'Świeżak' };
+    const mine = memes.approved().filter(m => (m.author || '').toLowerCase() === author.toLowerCase());
+    const pts = mine.reduce((s, m) => s + Math.max(0, memes.score(m)) * 2 + 5, 0)
+      + state.comments.filter(c => (c.author || '').toLowerCase() === author.toLowerCase()).length;
+    const level = pts >= 500 ? 'Legenda beki 👑' : pts >= 200 ? 'Mistrz memów 🔥' : pts >= 60 ? 'Beka-wyjadacz 😎' : pts > 0 ? 'Rozkręcasz się 🙂' : 'Świeżak';
+    return { points: pts, memes: mine.length, level };
+  }
+
   function stats() {
     const up = state.memes.reduce((s, m) => s + (m.votes_up || 0), 0);
     const down = state.memes.reduce((s, m) => s + (m.votes_down || 0), 0);
@@ -399,6 +444,7 @@ const DB = (() => {
   return {
     settings, categories, memes, comments, videos, games, quizzes,
     challenges, polls, answers, ads, reactions, users, stats, raw,
+    favorites, reports, reputation,
     util: { uid, now, esc, slugify, placeholder, extractYouTube }
   };
 })();

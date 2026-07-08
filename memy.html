@@ -35,7 +35,18 @@
       <option value="controversial">Kontrowersyjne 💩</option>
     </select>
     <a href="#dodaj" class="btn btn--sm">+ Wrzuć mema</a>
+    <button class="btn btn--ghost btn--sm" id="openCreator">🎨 Kreator mema</button>
+    <button class="btn btn--ghost btn--sm" id="openProfile">👤 Mój profil</button>
   </div>
+
+  <!-- zakładki: katalog / poczekalnia (jak na demotywatorach) -->
+  <div class="chips-row" style="margin:4px 0 10px">
+    <button class="fchip on" id="tabMain">📚 Katalog</button>
+    <button class="fchip" id="tabPending">⏳ Poczekalnia <span id="tabPendingCount"></span></button>
+  </div>
+  <p class="muted micro" id="pendingInfo" style="display:none;margin-bottom:10px">
+    Świeże zgłoszenia od użytkowników — jeszcze przed moderacją. Głosuj 🔥, najlepsze wpadają na stronę!
+  </p>
 
   <p class="muted micro" id="resultInfo" style="margin-bottom:14px"></p>
 

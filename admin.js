@@ -202,13 +202,17 @@
     memy() {
       const list = DB.memes.all().sort((a, b) => b.created_at.localeCompare(a.created_at));
       const modId = DB.settings.get().mem_of_day_id;
+      const repTotal = DB.reports.count();
       const rows = list.map(m => {
         const st = m.status === 'approved' ? '<span class="pill pill--y">na stronie</span>'
           : m.status === 'pending' ? '<span class="pill pill--r">poczekalnia</span>'
             : '<span class="pill">odrzucony</span>';
-        return `<tr data-id="${m.id}">
+        const reps = DB.reports.forMeme(m.id);
+        const repBadge = reps.length ? `<div style="margin-top:4px"><span class="pill pill--r">🚩 ${reps.length} zgł.</span>
+          <button class="btn btn--ghost btn--sm" data-act="repclear" title="${reps.map(r => DB.util.esc(r.reason)).join(', ')}">wyczyść</button></div>` : '';
+        return `<tr data-id="${m.id}" ${reps.length ? 'style="background:#241416"' : ''}>
           <td><img class="thumb" src="${m.image}" alt=""></td>
-          <td>${esc(m.caption || '—')}<div class="micro muted">${esc(m.author)}</div></td>
+          <td>${esc(m.caption || '—')}<div class="micro muted">${esc(m.author)}</div>${repBadge}</td>
           <td>${st}</td>
           <td><b style="color:var(--yellow)">${DB.memes.score(m)}</b><div class="micro muted">+${m.votes_up}/-${m.votes_down}</div></td>
           <td>
@@ -220,7 +224,8 @@
       }).join('');
 
       el('pane-memy').innerHTML = `
-        <p class="muted" style="margin-bottom:12px">★ = wyróżniony (sekcja „Polecane") · 📌 = mem dnia · ✓ = zatwierdź z poczekalni.</p>
+        <p class="muted" style="margin-bottom:12px">★ = wyróżniony (sekcja „Polecane") · 📌 = mem dnia · ✓ = zatwierdź z poczekalni.
+        ${repTotal ? ` · <b style="color:var(--red)">🚩 Zgłoszenia od użytkowników: ${repTotal}</b> (podświetlone wiersze)` : ''}</p>
         <div class="adm-card" style="padding:6px 12px;overflow:auto">
           <table class="atable">
             <thead><tr><th></th><th>Podpis / autor</th><th>Status</th><th>Wynik</th><th>Akcje</th></tr></thead>
@@ -232,6 +237,7 @@
         const id = tr.dataset.id;
         const act = (a) => tr.querySelector(`[data-act="${a}"]`);
         if (act('feat')) act('feat').onclick = () => { DB.memes.toggleFeatured(id); UI.toast('Zmieniono wyróżnienie', 'ok'); refresh(); };
+        if (act('repclear')) act('repclear').onclick = () => { DB.reports.clear(id); UI.toast('Zgłoszenia wyczyszczone', 'ok'); refresh(); };
         if (act('mod')) act('mod').onclick = () => { DB.memes.setMemOfDay(id); UI.toast('Ustawiono mem dnia 📌', 'ok'); refresh(); };
         if (act('ok')) act('ok').onclick = () => { DB.memes.approve(id); UI.toast('Zatwierdzono 🔥', 'ok'); refresh(); };
         if (act('del')) act('del').onclick = () => {

@@ -56,7 +56,9 @@ const Cards = (() => {
           </div>
           <div class="meme-actions">
             <button class="icon-btn cmt-open" title="Komentarze">💬<span class="cc" style="font-size:.72rem;margin-left:3px">${cmtCount}</span></button>
+            <button class="icon-btn fav ${DB.favorites.has(m.id) ? 'on' : ''}" title="Dodaj do ulubionych" style="${DB.favorites.has(m.id) ? 'color:var(--yellow)' : ''}">${DB.favorites.has(m.id) ? '⭐' : '☆'}</button>
             <button class="icon-btn share" title="Udostępnij">↗</button>
+            <button class="icon-btn report" title="Zgłoś nieodpowiednią treść" style="opacity:.7">🚩</button>
           </div>
         </div>
       </div>`;
@@ -76,6 +78,30 @@ const Cards = (() => {
 
     el.querySelector('.cmt-open').onclick = () => openComments(m.id);
     el.querySelector('.share').onclick = () => share(m);
+
+    // ulubione (lokalnie, per przeglądarka)
+    el.querySelector('.fav').onclick = (ev) => {
+      const on = DB.favorites.toggle(m.id);
+      ev.currentTarget.textContent = on ? '⭐' : '☆';
+      ev.currentTarget.style.color = on ? 'var(--yellow)' : '';
+      UI.toast(on ? 'Dodano do ulubionych ⭐' : 'Usunięto z ulubionych', 'ok', 1400);
+    };
+
+    // zgłoszenie nieodpowiedniej treści
+    el.querySelector('.report').onclick = () => {
+      if (DB.reports.alreadyByMe(m.id)) return UI.toast('Już zgłosiłeś tego mema — dzięki, moderator zerknie.', 'info');
+      const body = UI.modal(`
+        <p class="muted" style="margin-bottom:12px">Co jest nie tak z tym memem?</p>
+        <div style="display:grid;gap:8px">
+          ${['Spam lub reklama', 'Obraźliwa treść', 'Kradziony mem / plagiat', 'Inny powód'].map(r =>
+            `<button class="btn btn--ghost btn--block rep-r" data-r="${r}">${r}</button>`).join('')}
+        </div>`, { title: '🚩 Zgłoś mema' });
+      body.querySelectorAll('.rep-r').forEach(b => b.onclick = () => {
+        DB.reports.add(m.id, b.dataset.r);
+        UI.closeModal();
+        UI.toast('Zgłoszenie przyjęte. Moderator sprawdzi tego mema. 🙏', 'ok', 2600);
+      });
+    };
     return el;
   }
 
