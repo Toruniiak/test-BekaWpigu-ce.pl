@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /panel-admina.html
+Disallow: /skarbiec/

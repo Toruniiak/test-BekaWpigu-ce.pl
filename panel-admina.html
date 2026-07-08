@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel admina — BekaWpigułce ⚙️</title>
+<meta name="robots" content="noindex,nofollow"><!-- panel nie ma trafiać do Google -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+
+<!-- ===================================================================== -->
+<!-- BRAMA LOGOWANIA                                                        -->
+<!-- UWAGA: to NIE jest realne zabezpieczenie. Hasło leży w przeglądarce    -->
+<!-- (localStorage) i każdy z dostępem do urządzenia może je odczytać.      -->
+<!-- Prawdziwą ochronę daje dopiero logowanie po stronie serwera —          -->
+<!-- patrz README.md, sekcja „Bezpieczeństwo i przejście na backend".       -->
+<!-- ===================================================================== -->
+<div class="login-gate" id="gate">
+  <div class="card">
+    <div style="font-size:2.6rem">🔐</div>
+    <h2 style="font-family:var(--disp);font-weight:900;margin:8px 0 4px">Panel admina</h2>
+    <p class="muted" style="margin-bottom:18px">Podaj hasło, aby zarządzać treścią strony.</p>
+    <div class="field">
+      <input type="password" id="gatePass" placeholder="Hasło administratora" autocomplete="current-password">
+    </div>
+    <button class="btn btn--block" id="gateBtn">Wejdź do panelu</button>
+    <p class="muted micro" style="margin-top:14px">Domyślne hasło ustawisz/zmienisz w zakładce <b>Ustawienia</b>.</p>
+    <p style="margin-top:10px"><a href="index.html" class="micro muted">← Wróć na stronę</a></p>
+  </div>
+</div>
+
+<!-- ===================================================================== -->
+<!-- WŁAŚCIWY PANEL (ukryty do czasu zalogowania; odsłania admin.js)         -->
+<!-- Sidebar po lewej + panele po prawej. Treść paneli wypełnia admin.js.   -->
+<!-- ===================================================================== -->
+<div class="adm" id="admApp" hidden>
+
+  <!-- BOCZNE MENU -->
+  <aside class="adm-side">
+    <h4>Zarządzanie</h4>
+    <nav class="adm-nav" id="admNav">
+      <button data-pane="pulpit" class="on">📊 <span>Pulpit</span></button>
+      <button data-pane="poczekalnia">⏳ <span>Poczekalnia</span><span class="count" id="navPending">0</span></button>
+      <button data-pane="memy">🖼️ <span>Memy</span></button>
+      <button data-pane="odpowiedzi">📝 <span>Odpowiedzi</span></button>
+      <button data-pane="kategorie">🏷️ <span>Kategorie</span></button>
+      <button data-pane="filmy">🎬 <span>Filmy</span></button>
+      <button data-pane="gry">🎮 <span>Gry i quizy</span></button>
+      <button data-pane="sondy">📊 <span>Sondy</span></button>
+      <button data-pane="reklamy">💰 <span>Reklamy</span></button>
+      <button data-pane="ustawienia">⚙️ <span>Ustawienia</span></button>
+      <button data-pane="narzedzia">🧰 <span>Narzędzia</span></button>
+      <button data-pane="skarbiec">💡 <span>Skarbiec</span></button>
+    </nav>
+  </aside>
+
+  <!-- PANELE -->
+  <main class="adm-main">
+    <div class="adm-head">
+      <h2 id="paneTitle">Pulpit</h2>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a href="index.html" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">Podgląd strony ↗</a>
+        <button class="btn btn--red btn--sm" id="admLogout">Wyloguj</button>
+      </div>
+    </div>
+
+    <!-- Każdy panel to pusty kontener wypełniany przez admin.js -->
+    <section class="adm-pane on" id="pane-pulpit"></section>
+    <section class="adm-pane" id="pane-poczekalnia"></section>
+    <section class="adm-pane" id="pane-memy"></section>
+    <section class="adm-pane" id="pane-odpowiedzi"></section>
+    <section class="adm-pane" id="pane-kategorie"></section>
+    <section class="adm-pane" id="pane-filmy"></section>
+    <section class="adm-pane" id="pane-gry"></section>
+    <section class="adm-pane" id="pane-sondy"></section>
+    <section class="adm-pane" id="pane-reklamy"></section>
+    <section class="adm-pane" id="pane-ustawienia"></section>
+    <section class="adm-pane" id="pane-narzedzia"></section>
+    <section class="adm-pane" id="pane-skarbiec"></section>
+  </main>
+</div>
+
+<!-- Kolejność: dane → powłoka (toast/modal + górna nawigacja) → logika panelu -->
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polityka prywatności — BekaWpigułce</title>
+<meta name="description" content="Polityka prywatności serwisu BekaWpigułce: pliki cookie, reklamy Google, wtyczki społecznościowe i dane przechowywane lokalnie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="info">
+<main class="wrap" style="padding-top:40px;max-width:820px">
+  <span class="eyebrow">Dokument</span>
+  <h1 style="font-family:var(--disp);font-weight:900;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:-.02em">Polityka prywatności</h1>
+  <p class="muted" style="margin-top:10px">Niniejsza polityka opisuje, jak serwis BekaWpigułce obchodzi się z prywatnością osób odwiedzających.</p>
+
+  <h2 class="sec-h" style="margin-top:26px">1. Administrator i charakter serwisu</h2>
+  <p class="muted" style="line-height:1.7">BekaWpigułce to rozrywkowy serwis internetowy (memy, zagadki, gry i quizy). Serwis nie wymaga zakładania konta ani podawania danych osobowych, aby korzystać z treści.</p>
+
+  <h2 class="sec-h" style="margin-top:22px">2. Dane przechowywane w Twojej przeglądarce</h2>
+  <p class="muted" style="line-height:1.7">Część funkcji (np. zapamiętanie oddanego głosu w sondzie, rekordy w grach, wybrana ksywa) działa dzięki mechanizmowi <b>localStorage</b>. Dane te są zapisywane wyłącznie lokalnie, w Twojej przeglądarce, i <b>nie są wysyłane na żaden serwer</b> ani udostępniane innym osobom. Możesz je w każdej chwili usunąć, czyszcząc dane przeglądarki.</p>
+
+  <h2 class="sec-h" style="margin-top:22px">3. Pliki cookie i reklamy (Google AdSense)</h2>
+  <p class="muted" style="line-height:1.7">Serwis może wyświetlać reklamy dostarczane przez <b>Google AdSense</b>. W tym celu Google oraz jego partnerzy mogą używać plików cookie (m.in. tzw. cookie DoubleClick), aby wyświetlać reklamy dopasowane do zainteresowań na podstawie wcześniejszych wizyt w tym i innych serwisach. Korzystanie przez dostawców zewnętrznych z plików cookie pozwala im wyświetlać reklamy w oparciu o aktywność użytkownika.</p>
+  <p class="muted" style="line-height:1.7">Możesz zarządzać personalizacją reklam i wyłączyć ją w ustawieniach Google: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--yellow)">google.com/settings/ads</a>. Więcej o tym, jak Google wykorzystuje dane: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" style="color:var(--yellow)">policies.google.com/technologies/partner-sites</a>.</p>
+
+  <h2 class="sec-h" style="margin-top:22px">4. Wtyczki społecznościowe i treści osadzone</h2>
+  <p class="muted" style="line-height:1.7">Na stronie mogą znajdować się elementy osadzone z serwisów zewnętrznych: wtyczka strony <b>Facebook</b> oraz odtwarzacz <b>YouTube</b>. Dostawcy ci mogą ustawiać własne pliki cookie i zbierać dane zgodnie ze swoimi politykami prywatności. Zachęcamy do zapoznania się z politykami Facebooka i YouTube/Google.</p>
+
+  <h2 class="sec-h" style="margin-top:22px">5. Treści przesyłane przez użytkowników</h2>
+  <p class="muted" style="line-height:1.7">Jeśli prześlesz mema lub komentarz, podany podpis/ksywa oraz treść mogą być widoczne w serwisie. Nie podawaj w nich danych, których nie chcesz ujawniać publicznie.</p>
+
+  <h2 class="sec-h" style="margin-top:22px">6. Twoje prawa (RODO)</h2>
+  <p class="muted" style="line-height:1.7">Masz prawo m.in. do dostępu do swoich danych, ich sprostowania i usunięcia oraz do sprzeciwu wobec personalizacji reklam. Ponieważ serwis nie gromadzi danych osobowych na własnym serwerze, większość ustawień prywatności realizujesz przez ustawienia przeglądarki oraz konta Google/Facebook.</p>
+
+  <h2 class="sec-h" style="margin-top:22px">7. Kontakt i zmiany</h2>
+  <p class="muted" style="line-height:1.7">W sprawach prywatności skontaktuj się z nami przez <a href="kontakt.html" style="color:var(--yellow)">stronę Kontakt</a>. Polityka może być aktualizowana — obowiązuje wersja opublikowana w serwisie.</p>
+</main>
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{var f=DB.settings.get();document.querySelectorAll("[data-fb]").forEach(a=>a.href=f.fb_page_url);document.querySelectorAll("[data-tt]").forEach(a=>a.href=f.tiktok_url);});</script>
+</body>
+</html>

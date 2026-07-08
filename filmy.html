@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filmy — wideoteka — BekaWpigułce 🎬</title>
+<meta name="description" content="Wideoteka BekaWpigułce: najlepsze polskie skecze, składanki i klasyki w jednym miejscu. Filtruj po kategorii i oglądaj bez wychodzenia ze strony.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!--
+  Reklamy AdSense: po zatwierdzeniu konta wklej w panelu (Reklamy → klient AdSense)
+  identyfikator ca-pub-XXXX, a tutaj — jeśli chcesz auto-reklamy — odkomentuj skrypt:
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX" crossorigin="anonymous"></script>
+-->
+</head>
+<body data-page="filmy">
+
+<header class="wrap" style="padding-top:34px">
+  <span class="eyebrow">Wideoteka</span>
+  <h1 style="font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6vw,3.2rem);letter-spacing:-.02em">
+    Filmy 🎬 <span style="color:var(--yellow)">do obejrzenia od ręki</span>
+  </h1>
+  <p class="muted" style="max-width:60ch;margin-top:8px">Skecze, składanki i klasyki, które bawią za każdym razem. Kliknij kafelek — odtwarzacz otworzy się bez wychodzenia ze strony.</p>
+</header>
+
+<div class="wrap" style="margin-top:18px"><div data-ad="top"></div></div>
+
+<main class="wrap" style="padding-top:22px">
+
+  <!-- PASEK FILTRÓW KATEGORII -->
+  <section class="block">
+    <div class="sec-head">
+      <h2 class="sec-h">Wszystkie <span class="ac">filmy</span></h2>
+      <span class="muted micro"><b id="filmCount" style="color:var(--yellow)">0</b> w bibliotece</span>
+    </div>
+    <!-- Przyciski kategorii generuje filmy.js na podstawie DB.categories -->
+    <div class="chips-row" id="filmCats" style="margin-bottom:18px"></div>
+
+    <!-- Siatka kart wideo (renderuje Cards.video) -->
+    <div class="grid grid-3" id="filmGrid"></div>
+
+    <!-- Komunikat, gdy w danej kategorii nic nie ma -->
+    <div class="empty" id="filmEmpty" hidden>
+      <div style="font-size:2.6rem">🍿</div>
+      <p class="muted" style="margin-top:6px">W tej kategorii nie ma jeszcze żadnego filmu.</p>
+    </div>
+  </section>
+
+  <div data-ad="in-feed" style="margin:10px 0"></div>
+
+  <!-- BLOK ZACHĘTY: zaproponuj film -->
+  <section class="block">
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+      <div>
+        <span class="eyebrow red">Masz typ na film?</span>
+        <h3 class="card-h" style="margin:4px 0 2px">Podeślij nam link 🎯</h3>
+        <p class="muted" style="max-width:52ch">Znalazłeś polski skecz albo składankę, która musi tu być? Napisz do nas na Facebooku — najlepsze dodajemy do wideoteki.</p>
+      </div>
+      <a class="btn btn--fb" id="filmFb" target="_blank" rel="noopener">Napisz na Facebooku</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Kolejność ładowania: dane → powłoka (nawigacja/stopka) → karty → logika strony -->
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script src="cards.js"></script>
+<script src="filmy.js"></script>
+</body>
+</html>

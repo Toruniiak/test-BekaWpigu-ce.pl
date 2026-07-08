@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BekaWpigułce — codzienna dawka humoru 🔥</title>
+<meta name="description" content="Polska strona z humorem: memy, mini-gry, quizy i wyzwania. Nowe treści każdego dnia. Wrzucaj własne memy i głosuj na najlepsze.">
+
+<!-- ===== GOOGLE ADSENSE — wklej swój ca-pub-XXXX w panelu (zakładka Reklamy) i odkomentuj:
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+===== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="dots"></div>
+  <span class="eyebrow">Polska · humor · codziennie</span>
+  <h1>Codzienna dawka <span class="pop">beki</span> <span class="hot">🔥</span></h1>
+  <p>Memy, mini-gry, quizy i wyzwania. Wrzucaj własne, głosuj na najlepsze i wbijaj na nasz ranking gorących memów.</p>
+  <div class="hero-cta">
+    <a href="memy.html" class="btn">Zobacz memy</a>
+    <a href="rozrywka.html" class="btn btn--ghost">Zagraj w coś 🎮</a>
+  </div>
+  <div class="stats" id="heroStats"><!-- liczby z home.js --></div>
+</section>
+
+<!-- baner reklamowy (górny) -->
+<div class="wrap" style="margin-bottom:8px"><div data-ad="top"></div></div>
+
+<main class="wrap">
+
+  <!-- OSTATNI POST Z FACEBOOKA + zapis -->
+  <section class="block" id="fb">
+    <div class="sec-head">
+      <h2 class="sec-h">Prosto z <span class="ac">Facebooka</span></h2>
+      <a class="sec-link" id="fbLink" target="_blank" rel="noopener">Otwórz profil →</a>
+    </div>
+    <div class="split">
+      <div class="card card--pad0" style="padding:12px;display:flex;justify-content:center;min-width:0;overflow:hidden">
+        <!-- Oficjalna wtyczka FB: data-adapt-container-width sprawia, że plugin
+             zwęża się do szerokości kontenera (naprawia rozjeżdżanie na telefonie) -->
+        <div style="width:100%;max-width:500px;min-width:0">
+          <div class="fb-page"
+               data-tabs="timeline" data-width="500" data-height="480"
+               data-adapt-container-width="true"
+               data-small-header="true" data-hide-cover="true"
+               data-show-facepile="false" id="fbPlugin">
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Dołącz do ekipy</span>
+        <h3 class="card-h">Obserwuj na Facebooku</h3>
+        <p class="muted" style="margin-bottom:14px">Codzienna dawka beki, zagadki i konkursy prosto na Twoją tablicę. Zero spamu.</p>
+        <a class="btn btn--block btn--fb" id="fbFollow" target="_blank" rel="noopener">Obserwuj BekaWpigułce 🔥</a>
+        <div style="margin-top:18px"><div data-ad="sidebar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLECANE -->
+  <section class="block" id="featured">
+    <div class="sec-head">
+      <h2 class="sec-h">Polecane <span class="ar">przez nas</span></h2>
+      <a class="sec-link" href="memy.html">Wszystkie memy →</a>
+    </div>
+    <div class="meme-grid" id="featuredGrid"></div>
+  </section>
+
+  <!-- ODPOWIEDZI DO ZAGADEK Z FB -->
+  <section class="block" id="answers" hidden>
+    <div class="sec-head">
+      <h2 class="sec-h">Odpowiedzi do <span class="ac">zagadek</span></h2>
+      <a class="sec-link" href="odpowiedzi.html">Wszystkie →</a>
+    </div>
+    <p class="muted" style="margin:-6px 0 16px;max-width:60ch">Rozwiązania zagadek i iluzji z naszego Facebooka. Zgadłeś? Sprawdź 👇</p>
+    <div class="ans-grid" id="answersGrid"></div>
+  </section>
+
+  <!-- MEM DNIA + SONDA -->
+  <section class="block" id="memdnia">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Mem dnia</span>
+        <h2 class="sec-h" style="margin-bottom:16px">Dziś bawi nas to 👇</h2>
+        <div id="memOfDay"></div>
+      </div>
+      <div class="card">
+        <span class="eyebrow red">Sonda</span>
+        <h3 class="card-h" id="pollQ" style="margin-bottom:16px"></h3>
+        <div id="pollBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- in-feed reklama -->
+  <div data-ad="in-feed" style="margin:8px 0"></div>
+
+  <!-- TOP MEMÓW -->
+  <section class="block" id="top">
+    <div class="sec-head">
+      <h2 class="sec-h">🔥 Top <span class="ac">memów</span></h2>
+      <a class="sec-link" href="memy.html?sort=top">Pełny ranking →</a>
+    </div>
+    <div class="meme-grid" id="topGrid"></div>
+  </section>
+
+  <!-- FILMY -->
+  <section class="block" id="vids">
+    <div class="sec-head">
+      <h2 class="sec-h">Filmy i <span class="ar">wideo</span></h2>
+      <a class="sec-link" href="filmy.html">Cała wideoteka →</a>
+    </div>
+    <div class="grid grid-3" id="videoGrid"></div>
+  </section>
+
+  <!-- REAKCJE -->
+  <section class="block center">
+    <span class="eyebrow">Jak dziś czujesz bekę?</span>
+    <h2 class="sec-h" style="margin-bottom:18px">Kliknij reakcję</h2>
+    <div class="reacts" id="reacts" style="justify-content:center"></div>
+  </section>
+
+</main>
+
+<!-- skrypty: najpierw dane, potem powłoka, na końcu logika strony -->
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script src="cards.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rozrywka — gry i quizy — BekaWpigułce 🎮</title>
+<meta name="description" content="Mini-gry w przeglądarce z zapisem rekordów: Wężyk, Motorek, Saper, Złap Mema, Mem Memory, Klikolot oraz Ubieranka. Plus interaktywne quizy i wyzwania.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="rozrywka">
+
+<header class="wrap" style="padding-top:34px">
+  <span class="eyebrow">Strefa zabawy</span>
+  <h1 style="font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6vw,3.2rem);letter-spacing:-.02em">
+    Rozrywka 🎮 <span style="color:var(--yellow)">na chwilę przerwy</span>
+  </h1>
+  <p class="muted" style="max-width:58ch;margin-top:8px">Mini-gry, które odpalisz w przeglądarce bez instalacji, quiz na rozgrzewkę i wyzwania, w których możesz coś wygrać.</p>
+</header>
+
+<div class="wrap" style="margin-top:18px"><div data-ad="top"></div></div>
+
+<main class="wrap" style="padding-top:22px">
+
+  <!-- GRY -->
+  <section class="block">
+    <div class="sec-head">
+      <h2 class="sec-h">Mini-<span class="ac">gry</span></h2>
+      <span class="muted micro">Klik = graj</span>
+    </div>
+    <div class="grid grid-4" id="gamesGrid"></div>
+  </section>
+
+  <!-- QUIZY -->
+  <section class="block">
+    <div class="sec-head">
+      <h2 class="sec-h">Quizy <span class="ac">interaktywne</span></h2>
+      <span class="muted micro">Wynik na koniec</span>
+    </div>
+    <div class="grid grid-3" id="quizGrid"></div>
+  </section>
+
+  <div data-ad="in-feed" style="margin:8px 0"></div>
+
+  <!-- KONKURSY / WYZWANIA -->
+  <section class="block">
+    <div class="sec-head">
+      <h2 class="sec-h">Konkursy i <span class="ar">wyzwania</span></h2>
+      <a class="sec-link" href="memy.html#dodaj">Weź udział →</a>
+    </div>
+    <div class="grid grid-2" id="challengesGrid"></div>
+  </section>
+
+</main>
+
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script src="rozrywka.js"></script>
+</body>
+</html>

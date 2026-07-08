@@ -1,0 +1,61 @@
+═══════════════════════════════════════════════
+ BEKAWPIGUŁCE — PACZKA „STRONA WYPEŁNIONA"
+ Co nowego i jak wgrać (2 minuty czytania)
+═══════════════════════════════════════════════
+
+CO ZOSTAŁO DODANE / ZMIENIONE:
+
+📦 TREŚĆ (content.js + img/):
+• 24 oryginalne memy w stylu strony (img/memy/) — zatwierdzone,
+  z głosami i 6 wyróżnionymi (sekcja „Polecane" na stronie głównej)
+• 8 zagadek z pełnymi odpowiedziami i wyjaśnieniami (sekcja Odpowiedzi),
+  6 z autorskimi grafikami (img/zagadki/) — gotowe pod lejek z Facebooka
+• 4 filmy w sekcji Filmy (kultowe klasyki polskiego YouTube — legalne
+  osadzenie przez oficjalny odtwarzacz YT). Kolejne dodasz w panelu:
+  Filmy → wklej dowolny link YouTube.
+
+🎮 NOWE GRY (rozrywka.js + db.js):
+• Bloki 10×10 — rozbudowana układanka jak na screenie: 17 kształtów
+  klocków, czyszczenie linii, mnożnik za serie, wykrywanie końca gry,
+  rekordy. Sterowanie dotykowe (tapnij klocek → tapnij pole).
+• 2048 — pełny klasyk: swipe na telefonie + strzałki na PC, wynik,
+  rekord, wykrycie wygranej i przegranej.
+
+🧠 NOWE QUIZY (db.js):
+• „Zgadnij po emoji" (10 pytań) • „Prawda czy fałsz?" (10 pytań)
+  — razem z istniejącymi: 5 quizów × 10 pytań.
+
+📱 POPRAWKA PODGLĄDU FACEBOOKA (index.html):
+• Wtyczka FB ma teraz data-adapt-container-width — dopasowuje się
+  do szerokości telefonu zamiast rozjeżdżać ekran. Mniejsza wysokość
+  i ukryty cover = zgrabny kafelek zamiast ściany.
+
+📊 LICZNIKI ODWIEDZIN (shell.js + admin.js) — z poprzedniej rozmowy,
+  już wbudowane w tę paczkę.
+
+─────────────────────────────
+ JAK WGRAĆ
+─────────────────────────────
+1. W repozytorium na GitHubie ZASTĄP wszystkie pliki zawartością tej
+   paczki (najprościej: usuń stare pliki → wgraj wszystko z zipa →
+   commit). Folder img/ z memami i zagadkami też musi trafić do repo!
+2. Poczekaj ~1–2 min na przebudowę GitHub Pages.
+3. Wejdź na bekawpigulce.pl na świeżo (albo Ctrl+Shift+R) — memy,
+   gry, filmy i odpowiedzi będą widoczne od razu dla wszystkich.
+
+⚠️ WAŻNE — Twoja lokalna kopia robocza:
+Jeśli w panelu admina na TYM urządzeniu masz swoje niezapisane zmiany
+(localStorage), nowa treść z content.js je nadpisze przy pierwszym
+wejściu, bo ma nowszą datę publikacji. Jeżeli masz coś ważnego w
+poczekalni — najpierw opublikuj to przez Narzędzia → Publikuj treść.
+
+─────────────────────────────
+ POD ADSENSE — CO JESZCZE PRZED ZGŁOSZENIEM
+─────────────────────────────
+✔ Memy: 24 szt.  ✔ Zagadki+odpowiedzi: 8  ✔ Gry: 9  ✔ Quizy: 5  ✔ Filmy: 4
+□ Dopisz w Polityce prywatności akapit o AdSense i cookies (wzór był
+  w przewodniku).
+□ Wpisz działający e-mail w Kontakt.
+□ Publikuj 2–3 nowe memy dziennie przez panel — rosnąca strona
+  przechodzi review dużo łatwiej.
+□ Dopiero potem: adsense.google.com → zgłoszenie (Krok 2 przewodnika).

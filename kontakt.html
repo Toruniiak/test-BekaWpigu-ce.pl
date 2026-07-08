@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — BekaWpigułce</title>
+<meta name="description" content="Skontaktuj się z BekaWpigułce przez Facebooka lub TikToka. Chętnie poznamy Twoją opinię i pomysły.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="info">
+<main class="wrap" style="padding-top:40px;max-width:760px">
+  <span class="eyebrow">Kontakt</span>
+  <h1 style="font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6vw,3rem);letter-spacing:-.02em">Napisz <span style="color:var(--yellow)">do nas</span></h1>
+  <p class="muted" style="margin-top:14px;line-height:1.7">Masz pomysł na mema, zagadkę albo uwagę do strony? Najszybciej odpowiemy w wiadomości prywatnej na naszych profilach. Czytamy wszystko i zawsze cieszy nas kontakt od społeczności.</p>
+  <div class="card" style="margin-top:18px">
+    <h3 class="card-h" style="margin-bottom:10px">Najlepsze sposoby kontaktu</h3>
+    <p class="muted" style="line-height:1.8">• <b>Messenger / Facebook</b> — wiadomość prywatna na naszej stronie.<br>• <b>TikTok</b> — komentarz lub wiadomość pod naszymi filmami.<br>• <b>Komentarze</b> — pod postami na Facebooku.</p>
+    <div class="hero-cta" style="margin-top:16px">
+      <a class="btn btn--fb" data-fb target="_blank" rel="noopener">Napisz na Facebooku</a>
+      <a class="btn btn--ghost" data-tt target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+  <p class="muted micro" style="margin-top:14px">Odpowiadamy najczęściej w ciągu kilku dni — wszystko ogarnia jedna osoba 😅.</p>
+</main>
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{var f=DB.settings.get();document.querySelectorAll("[data-fb]").forEach(a=>a.href=f.fb_page_url);document.querySelectorAll("[data-tt]").forEach(a=>a.href=f.tiktok_url);});</script>
+</body>
+</html>

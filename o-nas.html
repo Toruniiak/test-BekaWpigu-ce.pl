@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O nas — BekaWpigułce</title>
+<meta name="description" content="BekaWpigułce — polska strona z humorem: memy, zagadki, mini-gry i quizy. Codzienna dawka beki od 2017 roku.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="info">
+<main class="wrap" style="padding-top:40px;max-width:760px">
+  <span class="eyebrow">O nas</span>
+  <h1 style="font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6vw,3rem);letter-spacing:-.02em">O stronie <span style="color:var(--yellow)">BekaWpigułce</span></h1>
+  <p class="muted" style="margin-top:14px;line-height:1.7">BekaWpigułce to polski projekt rozrywkowy tworzony z myślą o codziennej dawce dobrego humoru. Od 2017 roku publikujemy memy, zagadki, iluzje, quizy i mini-gry — treści, w których każdy odnajdzie kawałek własnej codzienności: pracy, rodziny, internetu i tych wszystkich małych absurdów życia.</p>
+  <p class="muted" style="line-height:1.7">Na tej stronie znajdziesz katalog memów, strefę rozrywki z grami w przeglądarce (Wężyk, Motorek, Saper i inne), interaktywne quizy oraz sekcję „Odpowiedzi" — rozwiązania zagadek, które publikujemy na naszym Facebooku. Wszystkie treści przygotowujemy samodzielnie.</p>
+  <p class="muted" style="line-height:1.7">Najwięcej dzieje się na naszych profilach społecznościowych — dołącz, zgaduj, komentuj i baw się razem z nami.</p>
+  <div class="hero-cta" style="margin-top:22px">
+    <a class="btn btn--fb" data-fb target="_blank" rel="noopener">Facebook</a>
+    <a class="btn btn--ghost" data-tt target="_blank" rel="noopener">TikTok</a>
+    <a class="btn btn--ghost" href="kontakt.html">Kontakt</a>
+  </div>
+</main>
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{var f=DB.settings.get();document.querySelectorAll("[data-fb]").forEach(a=>a.href=f.fb_page_url);document.querySelectorAll("[data-tt]").forEach(a=>a.href=f.tiktok_url);});</script>
+</body>
+</html>

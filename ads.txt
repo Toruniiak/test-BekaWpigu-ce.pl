@@ -1,0 +1,5 @@
+# Plik ads.txt dla AdSense.
+# Po założeniu konta AdSense ZAMIEŃ pub-0000000000000000 na swój numer wydawcy
+# (znajdziesz go w AdSense → Konto → Informacje; ma postać pub-XXXXXXXXXXXXXXXX).
+# Zostaw resztę linii bez zmian. To potwierdza, że to Ty masz prawo wyświetlać reklamy.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

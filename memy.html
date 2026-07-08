@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memy — BekaWpigułce 🔥</title>
+<meta name="description" content="Katalog polskich memów: filtruj, szukaj, sortuj, głosuj i komentuj. Wrzuć własnego mema do poczekalni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,800;0,900;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="memy">
+
+<header class="wrap" style="padding-top:34px">
+  <span class="eyebrow">Katalog</span>
+  <h1 style="font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6vw,3.2rem);letter-spacing:-.02em">
+    Wszystkie <span style="color:var(--yellow)">memy</span> 🔥
+  </h1>
+  <p class="muted" style="max-width:56ch;margin-top:8px">Filtruj po kategorii, szukaj po haśle, sortuj po ogniu. Masz lepszego? Wrzuć go niżej — moderator sprawdzi i wpuści na stronę.</p>
+</header>
+
+<div class="wrap" style="margin-top:18px"><div data-ad="top"></div></div>
+
+<main class="wrap" style="padding-top:22px">
+
+  <!-- pasek narzędzi: szukaj + kategorie + sort -->
+  <div class="toolbar">
+    <div class="search">🔎<input id="q" placeholder="Szukaj mema lub tagu…"></div>
+    <div class="chips-row" id="cats"></div>
+    <select class="sel" id="sort">
+      <option value="new">Najnowsze</option>
+      <option value="top">Najgorętsze 🔥</option>
+      <option value="discussed">Najbardziej komentowane</option>
+      <option value="controversial">Kontrowersyjne 💩</option>
+    </select>
+    <a href="#dodaj" class="btn btn--sm">+ Wrzuć mema</a>
+  </div>
+
+  <p class="muted micro" id="resultInfo" style="margin-bottom:14px"></p>
+
+  <!-- siatka memów -->
+  <section class="meme-grid" id="memeGrid"></section>
+  <div id="emptyState" style="display:none;padding:40px" class="card center">
+    <p style="font-size:1.1rem;font-weight:600">Nic tu nie ma 🤷</p>
+    <p class="muted">Zmień filtr albo wrzuć pierwszego mema w tej kategorii.</p>
+  </div>
+
+  <!-- in-feed reklama -->
+  <div data-ad="in-feed" style="margin:26px 0"></div>
+
+  <!-- FORMULARZ: dodaj mema do poczekalni -->
+  <section class="block" id="dodaj">
+    <div class="split">
+      <div class="card">
+        <span class="eyebrow red">Twój mem</span>
+        <h2 class="sec-h" style="margin-bottom:6px">Wrzuć mema do poczekalni</h2>
+        <p class="muted" style="margin-bottom:18px">Wgraj obrazek lub podaj link. Mem trafia do moderacji — po akceptacji pojawi się w katalogu.</p>
+
+        <div class="drop" id="drop">
+          <p>📤 Przeciągnij obrazek tutaj albo <b>kliknij, by wybrać</b></p>
+          <p class="micro">JPG / PNG / GIF · do ~3 MB</p>
+          <input type="file" id="file" accept="image/*" hidden>
+        </div>
+        <img id="preview" class="preview-img" style="display:none" alt="podgląd">
+
+        <div class="field" style="margin-top:14px"><label>…lub wklej link do obrazka</label>
+          <input id="memUrl" placeholder="https://… (opcjonalnie)"></div>
+        <div class="field"><label>Podpis mema *</label>
+          <input id="memCap" maxlength="120" placeholder="Tekst, który robi bekę"></div>
+        <div class="grid grid-2">
+          <div class="field"><label>Kategoria</label><select id="memCat" class="sel" style="width:100%"></select></div>
+          <div class="field"><label>Tagi (po przecinku)</label><input id="memTags" placeholder="praca, poniedziałek"></div>
+        </div>
+        <div class="field"><label>Twój nick (podpis autora)</label><input id="memAuthor" placeholder="np. mistrz_beki"></div>
+        <button class="btn btn--block" id="submitMeme">Wyślij do moderacji</button>
+      </div>
+
+      <div class="card" style="height:fit-content">
+        <span class="eyebrow">Poczekalnia</span>
+        <h3 class="card-h">Status moderacji</h3>
+        <div class="stat" style="margin:14px 0;width:100%">
+          <b id="pendingCount">0</b><span>memów czeka na akceptację</span>
+        </div>
+        <p class="muted micro">Moderator zatwierdza memy w panelu admina. Średni czas: zależnie od tego, jak szybko zajrzymy 😅. Trzymaj się zasad: bez hejtu, bez treści 18+, bez kradzionych wodnych znaków.</p>
+        <div style="margin-top:18px"><div data-ad="sidebar"></div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="content.js"></script>
+<script src="db.js"></script>
+<script src="shell.js"></script>
+<script src="cards.js"></script>
+<script src="memy.js"></script>
+</body>
+</html>
